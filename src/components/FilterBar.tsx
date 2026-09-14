@@ -40,6 +40,8 @@ export function FilterBar({ filters, onChange, onClear, open, onToggle }: Props)
           <label className="relative min-w-0 flex-1">
             <span className="sr-only">Search title or organization</span>
             <input
+              id="search"
+              name="search"
               type="search"
               value={filters.search}
               onChange={(event) => patch({ search: event.target.value })}
@@ -64,6 +66,7 @@ export function FilterBar({ filters, onChange, onClear, open, onToggle }: Props)
               onClick={onToggle}
               className="inline-flex items-center justify-center rounded-lg border border-line bg-surface-2 px-3 py-2 text-sm font-medium text-ink sm:hidden"
               aria-expanded={open}
+              aria-controls="opportunity-filters"
             >
               Filters{activeCount ? ` (${activeCount})` : ''}
             </button>
@@ -78,10 +81,15 @@ export function FilterBar({ filters, onChange, onClear, open, onToggle }: Props)
           </div>
         </div>
 
-        <div className={`${open ? 'grid' : 'hidden'} grid-cols-1 gap-3 sm:grid sm:grid-cols-2 lg:grid-cols-5`}>
+        <div
+          id="opportunity-filters"
+          className={`${open ? 'grid' : 'hidden'} grid-cols-1 gap-3 sm:grid sm:grid-cols-2 lg:grid-cols-5`}
+        >
           <label>
             <span className={labelClass}>Category</span>
             <select
+              id="category"
+              name="category"
               className={selectClass}
               value={filters.category}
               onChange={(event) => patch({ category: event.target.value })}
@@ -97,6 +105,8 @@ export function FilterBar({ filters, onChange, onClear, open, onToggle }: Props)
           <label>
             <span className={labelClass}>Status</span>
             <select
+              id="status"
+              name="status"
               className={selectClass}
               value={filters.status}
               onChange={(event) => patch({ status: event.target.value })}
@@ -112,6 +122,8 @@ export function FilterBar({ filters, onChange, onClear, open, onToggle }: Props)
           <label>
             <span className={labelClass}>Type</span>
             <select
+              id="opportunity_type"
+              name="opportunity_type"
               className={selectClass}
               value={filters.opportunityType}
               onChange={(event) => patch({ opportunityType: event.target.value })}
@@ -127,6 +139,8 @@ export function FilterBar({ filters, onChange, onClear, open, onToggle }: Props)
           <label>
             <span className={labelClass}>Deadline from</span>
             <input
+              id="deadline_from"
+              name="deadline_from"
               type="date"
               className={selectClass}
               value={filters.deadlineFrom}
@@ -136,6 +150,8 @@ export function FilterBar({ filters, onChange, onClear, open, onToggle }: Props)
           <label>
             <span className={labelClass}>Deadline to</span>
             <input
+              id="deadline_to"
+              name="deadline_to"
               type="date"
               className={selectClass}
               value={filters.deadlineTo}
